@@ -1,2 +1,2 @@
-# digital-scoreboard
+# Digital Scoreboard
 Digital Scoreboard
