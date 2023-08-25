@@ -43,8 +43,23 @@
   }
 
   /* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width:1024px) {
+    h1 {
+      font-size: 2.5rem;
+    }
+    
+    p {
+      font-size: 2rem;
+    }
 
+    .custom-p {
+      margin: 40px;
+    }
+
+    .bg-date {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
   }
 </style>
 {% endblock css %}
