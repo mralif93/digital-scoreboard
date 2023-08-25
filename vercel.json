@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "digital-scoreboard/wsgi.py",
+      "src": "scoreboard/wsgi.py",
       "use": "@vercel/python",
       "config": {
         "maxLambdaSize": "15mb",
@@ -26,7 +26,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "digital-scoreboard/wsgi.py"
+      "dest": "scoreboard/wsgi.py"
     }
   ],
   "outputDirectory": "staticfiles"
