@@ -1,0 +1,170 @@
+{% extends 'board/master/base.html' %}
+{% load static %}
+{% load tz %}
+
+{% block title %} Index - Digital Scoreboard {% endblock title %}
+{% block css %}
+<style>
+  h1 {
+    font-size: 9rem;
+  }
+  
+  p {
+    font-size: 6.2rem;
+  }
+
+  .custom-p {
+    margin: 70px;
+  }
+
+  .bg-date {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+</style>
+{% endblock css %}
+
+{% block content %}
+<div class="custom-p">
+  <div class="row">
+    <div class="col-2">
+      <img src="{% static 'board/images/reckitt_logo.png' %}" class="img-fluid rounded-top p-5" alt="No Image">
+    </div>
+    <div class="col-6 align-self-center">
+      <h1 class="text-uppercase pl-3 lh-base fw-bold">RECKITT JOHOR BAHRU <br /> health & safety performance <br /> as of <span class="text-danger rounded-5 bg-date">{% now "M d, Y" %}</span></h1>
+    </div>
+    <div class="col-4 align-self-center">
+      <div class="row">
+        <div class="col-6 text-end">
+          <p class="fw-bold">Date:</p>
+        </div>
+        <div class="col-6 text-center">
+          <p class="bg-primary text-white fw-bold">{% now "d/m/Y" %}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 text-end">
+          <p class="fw-bold">Day:</p>
+        </div>
+        <div class="col-6 text-center">
+          <p class="bg-primary text-white fw-bold">{% now "l" %}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 text-end">
+          <p class="fw-bold">Time:</p>
+        </div>
+        <div class="col-6 text-center">
+          <p class="bg-primary text-white fw-bold">
+            <span id="hrs"></span>
+            <span>:</span>
+            <span id="min"></span>
+            <span>:</span>
+            <span id="sec"></span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 bg-primary text-white p-4 overflow-y-scroll">
+      <p class="mb-0 p-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur atque soluta mollitia.</p>
+    </div>
+  </div>
+
+  <div class="mt-5"></div>
+
+  <div class="row mt-2 text-uppercase">
+    <div class="col-11">
+      <p>Lost Time Injury</p>
+    </div>
+    <div class="col-1 text-center">
+      <p class="mb-0 text-danger fw-bold">0</p>
+    </div>
+  </div>
+  <div class="row mt-2 text-uppercase">
+    <div class="col-11">
+      <p>Medical Treatment Case</p>
+    </div>
+    <div class="col-1 text-center">
+      <p class="mb-0 text-danger fw-bold">0</p>
+    </div>
+  </div>
+  <div class="row mt-2 text-uppercase">
+    <div class="col-11">
+      <p>First Aid Case</p>
+    </div>
+    <div class="col-1 text-center">
+      <p class="mb-0 text-danger fw-bold">0</p>
+    </div>
+  </div>
+  <div class="row mt-2 text-uppercase">
+    <div class="col-11">
+      <p>Fire / Explosion</p>
+    </div>
+    <div class="col-1 text-center">
+      <p class="mb-0 text-danger fw-bold">0</p>
+    </div>
+  </div>
+  <div class="row mt-2 text-uppercase">
+    <div class="col-11">
+      <p>Lost of Primary Containment</p>
+    </div>
+    <div class="col-1 text-center">
+      <p class="mb-0 text-danger fw-bold">0</p>
+    </div>
+  </div>
+  <div class="row mt-2 text-uppercase">
+    <div class="col-11">
+      <p>Property / Equipment</p>
+    </div>
+    <div class="col-1 text-center">
+      <p class="mb-0 text-danger fw-bold">0</p>
+    </div>
+  </div>
+  <div class="row mt-2 text-uppercase">
+    <div class="col-11">
+      <p>Near Miss</p>
+    </div>
+    <div class="col-1 text-center">
+      <p class="mb-0 text-danger fw-bold">0</p>
+    </div>
+  </div>
+  <div class="row mt-2 text-uppercase">
+    <div class="col-11">
+      <p>Unsafe Act Unsafe Condition</p>
+    </div>
+    <div class="col-1 text-center">
+      <p class="mb-0 text-danger fw-bold">0</p>
+    </div>
+  </div>
+  <!-- <div class="row mt-2 text-uppercase">
+    <div class="col-11">
+      <p>Total Safe Manhours</p>
+    </div>
+    <div class="col-1 text-center">
+      <p class="mb-0 text-danger fw-bold">0</p>
+    </div>
+  </div> -->
+</div>
+{% endblock content %}
+{% block js %}
+<script>
+  let hrs = document.getElementById('hrs');
+  let min = document.getElementById('min');
+  let sec = document.getElementById('sec');
+
+  setInterval(() => {
+    let currentTime = new Date();
+    currentTime.toLocaleString('en-US', {
+      dateStyle: 'full',
+      timeStyle: 'full',
+      hour12: false,
+    });
+    console.log(currentTime);
+    hrs.innerHTML = String(currentTime.getHours()).padStart(2, '0');
+    min.innerHTML = String(currentTime.getMinutes()).padStart(2, '0');
+    sec.innerHTML = String(currentTime.getSeconds()).padStart(2, '0');
+  }, 1000);
+</script>
+{% endblock js %}
