@@ -21,14 +21,39 @@
     padding-left: 3rem;
     padding-right: 3rem;
   }
+
+  /* On screens that are 992px wide or less, go from four columns to two columns */
+  @media screen and (max-width: 3260px) {
+    h1 {
+      font-size: 4rem;
+    }
+    
+    p {
+      font-size: 2rem;
+    }
+
+    .custom-p {
+      margin: 40px;
+    }
+
+    .bg-date {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  /* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 800px) {
+
+  }
 </style>
 {% endblock css %}
 
 {% block content %}
 <div class="custom-p">
   <div class="row">
-    <div class="col-2">
-      <img src="{% static 'board/images/reckitt_logo.png' %}" class="img-fluid rounded-top p-5" alt="No Image">
+    <div class="col-2 p-0 align-self-center">
+      <img src="{% static 'board/images/reckitt_logo.png' %}" class="img-fluid rounded-top" alt="No Image">
     </div>
     <div class="col-6 align-self-center">
       <h1 class="text-uppercase pl-3 lh-base fw-bold">RECKITT JOHOR BAHRU <br /> health & safety performance <br /> as of <span class="text-danger rounded-5 bg-date">{% now "M d, Y" %}</span></h1>
@@ -67,8 +92,8 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-12 bg-primary text-white p-4 overflow-y-scroll">
-      <p class="mb-0 p-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur atque soluta mollitia.</p>
+    <div class="col-12 bg-primary text-white p-4">
+      <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur atque soluta mollitia. </p>
     </div>
   </div>
 
@@ -76,7 +101,7 @@
 
   <div class="row mt-2 text-uppercase">
     <div class="col-11">
-      <p>Lost Time Injury</p>
+      <p class="fw-bold">Lost Time Injury</p>
     </div>
     <div class="col-1 text-center">
       <p class="mb-0 text-danger fw-bold">0</p>
@@ -84,7 +109,7 @@
   </div>
   <div class="row mt-2 text-uppercase">
     <div class="col-11">
-      <p>Medical Treatment Case</p>
+      <p class="fw-bold">Medical Treatment Case</p>
     </div>
     <div class="col-1 text-center">
       <p class="mb-0 text-danger fw-bold">0</p>
@@ -92,7 +117,7 @@
   </div>
   <div class="row mt-2 text-uppercase">
     <div class="col-11">
-      <p>First Aid Case</p>
+      <p class="fw-bold">First Aid Case</p>
     </div>
     <div class="col-1 text-center">
       <p class="mb-0 text-danger fw-bold">0</p>
@@ -100,7 +125,7 @@
   </div>
   <div class="row mt-2 text-uppercase">
     <div class="col-11">
-      <p>Fire / Explosion</p>
+      <p class="fw-bold">Fire / Explosion</p>
     </div>
     <div class="col-1 text-center">
       <p class="mb-0 text-danger fw-bold">0</p>
@@ -108,7 +133,7 @@
   </div>
   <div class="row mt-2 text-uppercase">
     <div class="col-11">
-      <p>Lost of Primary Containment</p>
+      <p class="fw-bold">Lost of Primary Containment</p>
     </div>
     <div class="col-1 text-center">
       <p class="mb-0 text-danger fw-bold">0</p>
@@ -116,7 +141,7 @@
   </div>
   <div class="row mt-2 text-uppercase">
     <div class="col-11">
-      <p>Property / Equipment</p>
+      <p class="fw-bold">Property / Equipment</p>
     </div>
     <div class="col-1 text-center">
       <p class="mb-0 text-danger fw-bold">0</p>
@@ -124,7 +149,7 @@
   </div>
   <div class="row mt-2 text-uppercase">
     <div class="col-11">
-      <p>Near Miss</p>
+      <p class="fw-bold">Near Miss</p>
     </div>
     <div class="col-1 text-center">
       <p class="mb-0 text-danger fw-bold">0</p>
@@ -132,7 +157,7 @@
   </div>
   <div class="row mt-2 text-uppercase">
     <div class="col-11">
-      <p>Unsafe Act Unsafe Condition</p>
+      <p class="fw-bold">Unsafe Act Unsafe Condition</p>
     </div>
     <div class="col-1 text-center">
       <p class="mb-0 text-danger fw-bold">0</p>
