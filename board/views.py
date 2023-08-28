@@ -34,3 +34,33 @@ def Page2View(request):
     'list': list,
   }
   return render(request, 'board/page2.html', context)
+
+
+def Page3View(request):
+  # creating class
+  class obj:
+    def __init__(self, title, total, ytd):
+      self.title = title
+      self.total = total
+      self.ytd = ytd
+
+  # creating list
+  list_1 = []
+  list_2 = []
+
+  # appending instances to list
+  list_1.append(obj('Fatality', 0, '00-00-0000'))
+  list_1.append(obj('Severe Accident', 0, '00-00-0000'))
+  list_1.append(obj('Serious Safety Events', 0, '00-00-0000'))
+  list_1.append(obj('Total Recordable FR', 0, '00-00-0000'))
+  list_1.append(obj('Lost Work Day FR', 0, '00-00-0000'))
+
+  list_2.append(obj('Near Miss Rate', 0, '00-00-0000'))
+  list_2.append(obj('Safety Observations', 0, '00-00-0000'))
+  list_2.append(obj('Safety Hours Trained (% man hrs worked)', 0, '00-00-0000'))
+
+  context = {
+    'list_1': list_1,
+    'list_2': list_2,
+  }
+  return render(request, 'board/page3.html', context)
