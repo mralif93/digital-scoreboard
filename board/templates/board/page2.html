@@ -1,0 +1,191 @@
+{% extends 'board/master/base.html' %}
+{% load static %}
+{% load tz %}
+
+{% block title %} Index - Digital Scoreboard {% endblock title %}
+{% block css %}
+<style>
+  h1 {
+    font-size: 9rem;
+  }
+  
+  p {
+    font-size: 6.2rem;
+  }
+
+  .custom-p {
+    margin: 70px;
+  }
+
+  .bg-date {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  /* On screens that are 992px wide or less, go from four columns to two columns */
+  @media screen and (max-width: 3260px) {
+    h1 {
+      font-size: 4rem;
+    }
+    
+    p {
+      font-size: 2rem;
+    }
+
+    .custom-p {
+      margin: 40px;
+    }
+
+    .bg-date {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  /* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
+  @media screen and (max-width:1440px) {
+    h1 {
+      font-size: 3rem;
+    }
+    
+    p {
+      font-size: 2rem;
+    }
+
+    .custom-p {
+      margin: 30px;
+    }
+
+    .bg-date {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  /* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
+  @media screen and (max-width:1024px) {
+    h1 {
+      font-size: 3rem;
+    }
+    
+    p {
+      font-size: 2rem;
+    }
+
+    .custom-p {
+      margin: 40px;
+    }
+
+    .bg-date {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+</style>
+{% endblock css %}
+
+{% block content %}
+<div class="custom-p">
+  <div class="row">
+    <div class="col-2 p-0 align-self-center">
+      <img src="{% static 'board/images/reckitt_logo.png' %}" class="img-fluid rounded-top" alt="No Image">
+    </div>
+    <div class="col-6 align-self-center">
+      <h1 class="text-uppercase pl-3 lh-base fw-bold">RECKITT JOHOR BAHRU <br /> health & safety performance <br /> as of <span class="text-danger rounded-5 bg-date">{% now "M d, Y" %}</span></h1>
+    </div>
+    <div class="col-4 align-self-center">
+      <div class="row">
+        <div class="col-6 text-end">
+          <p class="fw-bold">Date:</p>
+        </div>
+        <div class="col-6 text-center">
+          <p class="bg-primary text-white fw-bold">{% now "d/m/Y" %}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 text-end">
+          <p class="fw-bold">Day:</p>
+        </div>
+        <div class="col-6 text-center">
+          <p class="bg-primary text-white fw-bold">{% now "l" %}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 text-end">
+          <p class="fw-bold">Time:</p>
+        </div>
+        <div class="col-6 text-center">
+          <p class="bg-primary text-white fw-bold">
+            <span id="hrs"></span>
+            <span>:</span>
+            <span id="min"></span>
+            <span>:</span>
+            <span id="sec"></span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 bg-primary text-white p-4">
+      <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur atque soluta mollitia. </p>
+    </div>
+  </div>
+
+  <div class="mt-5"></div>
+
+  <div class="row">
+    <div class="col-12 p-0">
+      <div class="table-responsive">
+        <table class="table">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col" class="text-center">
+                <p class="mb-0">Title</p>
+              </th>
+              <th scope="col" class="text-center">
+                <p class="mb-0">Total</p>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if list %}
+              {% for x in list %}
+                <tr>
+                  <td>
+                    <p class="mb-0 fw-bold text-center">{{ x.title }}</p>
+                  </td>
+                  <td class="text-center">
+                    <p class="mb-0 text-danger fw-bold">{{ x.total }}</p>
+                  </td>
+                </tr>
+              {% endfor %}
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+      
+    </div>
+  </div>
+</div>
+{% endblock content %}
+{% block js %}
+<script>
+  let hrs = document.getElementById('hrs');
+  let min = document.getElementById('min');
+  let sec = document.getElementById('sec');
+
+  setInterval(() => {
+    let currentTime = new Date();
+    currentTime.toLocaleString('en-US', {
+      dateStyle: 'full',
+      timeStyle: 'full',
+      hour12: false,
+    });
+    console.log(currentTime);
+    hrs.innerHTML = String(currentTime.getHours()).padStart(2, '0');
+    min.innerHTML = String(currentTime.getMinutes()).padStart(2, '0');
+    sec.innerHTML = String(currentTime.getSeconds()).padStart(2, '0');
+  }, 1000);
+</script>
+{% endblock js %}
