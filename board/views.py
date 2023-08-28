@@ -49,15 +49,15 @@ def Page3View(request):
   list_2 = []
 
   # appending instances to list
-  list_1.append(obj('Fatality', 0, '00-00-0000'))
-  list_1.append(obj('Severe Accident', 0, '00-00-0000'))
-  list_1.append(obj('Serious Safety Events', 0, '00-00-0000'))
-  list_1.append(obj('Total Recordable FR', 0, '00-00-0000'))
-  list_1.append(obj('Lost Work Day FR', 0, '00-00-0000'))
+  list_1.append(obj('Fatality', 0, 0))
+  list_1.append(obj('Severe Accident', 0, 0))
+  list_1.append(obj('Serious Safety Events', '<=7', 0))
+  list_1.append(obj('Total Recordable FR', '<=0.35', 0))
+  list_1.append(obj('Lost Work Day FR', '<=0.12', 0))
 
-  list_2.append(obj('Near Miss Rate', 0, '00-00-0000'))
-  list_2.append(obj('Safety Observations', 0, '00-00-0000'))
-  list_2.append(obj('Safety Hours Trained (% man hrs worked)', 0, '00-00-0000'))
+  list_2.append(obj('Near Miss Rate', 45, 0))
+  list_2.append(obj('Safety Observations', '95%', 0))
+  list_2.append(obj('Safety Hours Trained (% man hrs worked)', '1.5%', 0))
 
   context = {
     'list_1': list_1,
