@@ -64,3 +64,37 @@ def Page3View(request):
     'list_2': list_2,
   }
   return render(request, 'board/page3.html', context)
+
+def Page4View(request):
+  # creating class
+  class obj:
+    def __init__(self, title, goal, total, ytd):
+      self.title = title
+      self.goal = goal
+      self.total = total
+      self.ytd = ytd
+
+  # creating list
+  list_1 = []
+  list_2 = []
+
+  # appending instances to list
+  list_1.append(obj('Fatality', 0, 0, 0))
+  list_1.append(obj('Severe Accident', 0, 0, 0))
+  list_1.append(obj('Serious Safety Events', '<=7', 0, 0))
+  list_1.append(obj('Total Recordable FR', '<=0.35', 0, 0))
+  list_1.append(obj('Lost Work Day FR', '<=0.12', 0, 0))
+
+  list_2.append(obj('Near Miss Rate', 45, 0, 0))
+  list_2.append(obj('Safety Observations', '95%', 0, 0))
+  list_2.append(obj('Safety Hours Trained (% man hrs worked)', '1.5%', 0, 0))
+
+  # text moving
+  text = 'You don’t need to know the whole alphabet of Safety. The A, B, C of it will save you if you follow it: Always Be Careful. Carefulness costs you nothing. Carelessness may cost you your life.'
+
+  context = {
+    'list_1': list_1,
+    'list_2': list_2,
+    'text' : text,
+  }
+  return render(request, 'board/page4.html', context)
