@@ -1,0 +1,25 @@
+{% extends 'board/master/base.html' %}
+{% load static %}
+
+{% block title %} Index - Digital Scoreboard {% endblock title %}
+{% block css %}{% endblock css %}
+
+{% block content %}
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 p-0">
+        <div class="ratio ratio-16x9">
+          <video src="{% static 'board/video/loading.mp4' %}" muted="muted" autoplay="autoplay"></video>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
+
+{% block js %}
+<script>
+  setTimeout(() => {
+    window.location.href = 'v4/';
+  }, 3000)
+</script>
+{% endblock js %}
