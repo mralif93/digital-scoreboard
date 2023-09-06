@@ -116,12 +116,14 @@ def Page5View(request):
   list_1.append(obj('Fatality', 0, 0, 0))
   list_1.append(obj('Severe Accident', 0, 0, 0))
   list_1.append(obj('Serious Safety Events', '<=7', 0, 0))
-  list_1.append(obj('Total Recordable FR', '<=0.35', 0, 0))
+  list_1.append(obj('Total Recordable FR', '<=0.35', 0, 0.52))
   list_1.append(obj('Lost Work Day FR', '<=0.12', 0, 0))
+  list_1.append(obj('Energy', '<=0.122', 156.04, 148.42))
+  list_1.append(obj('Water', '<=0.42', 0.6, 0.38))
 
-  list_2.append(obj('Near Miss Rate', 45, 0, 0))
-  list_2.append(obj('Safety Observations', '95%', 0, 0))
-  list_2.append(obj('Safety Hours Trained (% man hrs worked)', '1.5%', 0, 0))
+  list_2.append(obj('Near Miss Rate', 45, 3, 13))
+  list_2.append(obj('Safety Observations', '95%', '100%', '83%'))
+  list_2.append(obj('Safety Hours Trained (% man hrs worked)', '1.40%', 1.4, 1.4))
 
   # text moving
   text = 'You don’t need to know the whole alphabet of Safety. The A, B, C of it will save you if you follow it: Always Be Careful. Carefulness costs you nothing. Carelessness may cost you your life.'
